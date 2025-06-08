@@ -59,7 +59,7 @@ export const appliedjob = async (req, res) => {
                 const applications = await application.find({ applicant: userid })
                 .populate({
                   path: 'job',
-                  select: '-createdby -application',
+                  select: ' -application',
                   populate: {
                     path: 'company' // Populating the company within the job
                   }
@@ -112,6 +112,7 @@ export const updatestatus = async (req, res) => {
 
         return res.status(200).json({
             message: "Status updated successfully",
+            
             result: updatedApplication,
             success: true,
         });
@@ -122,3 +123,4 @@ export const updatestatus = async (req, res) => {
         });
     }
 };
+ 

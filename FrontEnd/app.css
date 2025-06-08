@@ -32,3 +32,6 @@
   scrollbar-width: none; /* Firefox */
 }
 
+.custom-loader svg path {
+  stroke: #6a38c2 !important;
+}

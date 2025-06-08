@@ -111,14 +111,18 @@ export const getalljobs=async(req,res)=>{
 
 export const getjobsbyid=async(req,res)=>{
    try {
-    // console.log(req.params)
+ 
+    
+    const companydata = await company.find({userid:req.id})
+  console.log(companydata)
      const jobid=req.params.jobid;
-    //  console.log("frontend job id -> ",jobid)
+     
             const result=await job.findOne({_id:jobid}).populate({
                 path:'application',
                 populate:'applicant',
                 
-            })
+            }).populate({path:'company',select:'name'})
+           console.log(result.company.name)
             if(!result){
                 return res.status(200).json({
                     message:"No jobs found entered id is incorrect",
@@ -126,12 +130,21 @@ export const getjobsbyid=async(req,res)=>{
                 })
 
             }
-          //  console.log(result)
+           const valid_company= companydata.filter((cc,idx)=>cc.name==result.company.name)
+     console.log("company valid haii yaa nahii ",valid_company)
+           if(valid_company.length!=0 ){
             return res.status(200).json({
                 message:"job found",
                 result,
                 success:true,
-            })
+            })}
+            else{
+                return res.status(400).json({
+                message:"You haven't created this job No Authorizations",
+                result:{},
+                success:false,
+            })}
+            
    } catch (error) {
     console.log(error.message)
     return res.status(500).json({
@@ -266,8 +279,13 @@ export const deletejobbyid=async(req,res)=>{
 
 export const getsearchjobs=async(req,res)=>{
     try {
-            const keyword=req.query.keyword||"";
+            let keyword=req.query.keyword||"";
              console.log("yaha aatoh gaya",keyword)
+             if(keyword){
+                keyword=keyword.split(" ");
+                keyword=keyword[0].toLowerCase();
+             }
+             console.log(keyword)
             const search={
                 $or:[{
                     title:{$regex:keyword,$options:"i"},
@@ -275,14 +293,22 @@ export const getsearchjobs=async(req,res)=>{
                     requirement:{$regex:keyword,$options:"i"},
                 }]
             }
-            const result=await job.find(search).populate('company').populate('createdby')
+            let  result=await job.find(search).populate('company').populate('createdby')
             
            
-            if(!result){
+            if(result.length==0){
+                
+               
+              
+               
                 return res.status(400).json({
                     message:"No jobs found ",
                     success :false,
                 })
+            
+        
+                 
+            
             }
             //console.log(result)
             return res.status(201).json({
@@ -300,3 +326,6 @@ export const getsearchjobs=async(req,res)=>{
         })
     }
 }
+
+
+

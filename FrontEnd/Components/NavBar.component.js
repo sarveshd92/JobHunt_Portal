@@ -20,7 +20,7 @@ const NavBar = () => {
   useEffect(()=>{
 
   },[dispatch])
-  // console.log("navbar->>storeee",applications)
+  
   return (
     <div className="h-16 w-full flex justify-between items-center px-8 bg-gray-100 box-border">
       <div className="flex items-center h-full">
@@ -41,7 +41,7 @@ const NavBar = () => {
             <Link to="/jobs" className="hover:text-blue-500">Jobs</Link>
           </li>
           <li>
-            <Link to="/" className="hover:text-blue-500">About</Link>
+            <Link to="/aboutme" className="hover:text-blue-500">About</Link>
           </li>
          
           </>

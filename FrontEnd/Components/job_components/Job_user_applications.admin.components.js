@@ -1,17 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const JobUserApplications = () => {
     const [companies, setCompanies] = useState([]);
     const { jobid } = useParams();
-
+    const navigate=useNavigate();
     const fetchData = async () => {
         try {
             const response = await axios.get(`http://localhost:8000/api/v1/job/getjobbyid/${jobid}`, {
                 withCredentials: true,
             });
-            setCompanies(response?.data?.result || []);
+            setCompanies(response.data.result || []);
+           
+            
         } catch (error) {
             console.error("Error fetching companies:", error);
         }
@@ -46,11 +48,14 @@ const JobUserApplications = () => {
             console.error("Error updating status:", error);
         }
     };
+const handleChat=(userid)=>{
 
+     navigate(`/chat/${userid}`)
+}
     useEffect(() => {
         fetchData();
     }, []);
-
+ console.log(companies)
     return (
         <div className="mt-4 p-6 bg-gray-50 min-h-screen">
             <h1 className="text-3xl font-bold text-gray-900 mb-6">
@@ -72,7 +77,7 @@ const JobUserApplications = () => {
                         {!companies?.application?.length ? (
                             <tr>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-medium">
-                                    No applications for this job
+                                    {"No applications for this job"} 
                                 </td>
                             </tr>
                         ) : (
@@ -132,6 +137,14 @@ const JobUserApplications = () => {
                                             </button>
                                         )}
                                     </td>
+                                    <td> <button
+                                                    className="bg-red-500 hover:bg-red-600 text-white rounded-lg p-2 focus:outline-none"
+                                                    onClick={() =>
+                                                        handleChat( application?.applicant?._id)
+                                                    }
+                                                >💬 {application?.applicant?._id}
+                                                    
+                                                </button></td>
                                 </tr>
                             ))
                         )}

@@ -95,14 +95,14 @@ export const getcompanybyid=async(req,res)=>{
 export const updatedetails=async(req,res)=>{
    try {
      const{name,description,location,website}=req.body;
-     console.log("body",req.body)
+    
        const to_update={name,description,location,website}
-       console.log("id",req.id)
        
-       console.log(req.params.id)
-       console.log("files from update controller",req.file.path)
+       
       
-      if(req.file.path) {
+       console.log("files from update controller",req.file)
+      
+      if(req.file) {
         const datafile=await uploadOnCloudinary(req.file?.path)
                 if(datafile){
                     to_update.logo = datafile.url; 

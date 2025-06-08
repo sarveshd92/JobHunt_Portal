@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+import {io} from "socket.io-client"
 const AppliedJobsNavbar = ({ applications }) => {
-  console.log("applied jobs page -> ", applications);
+  const navigate =useNavigate()
+console.log("APPLICATIONS",applications)
+   
+const handleClick=(recruiter,status,userid,jobapplicationid)=>{
 
+  navigate(`/chat/${recruiter}/${status}/${userid}/${jobapplicationid}`)
+}
+      
   return (
     <div className="w-full flex justify-center items-center p-4 bg-gray-50 mt-8">
       <div className="w-11/12 md:w-7/12 lg:w-6/12 max-h-[50vh] border border-gray-300 rounded-lg shadow-lg bg-white">
@@ -22,6 +30,9 @@ const AppliedJobsNavbar = ({ applications }) => {
                 <th className="w-1/4 border-b border-gray-300 px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Title
                 </th>
+                <th className="w-1/6 border-b border-gray-300 px-4 py-3 text-left text-sm font-semibold text-gray-700">
+  Chat
+</th>
               </tr>
             </thead>
             <tbody>
@@ -48,6 +59,25 @@ const AppliedJobsNavbar = ({ applications }) => {
                     <td className="border-t border-gray-300 px-2 py-3 text-gray-600 text-sm truncate">
                       {application?.job?.title || ""}
                     </td>
+                   <td className="border-t border-gray-300 px-2 py-3 text-sm text-center">
+  {application?.status === "Selected" ? (
+    <button
+      onClick={() => handleClick(application?.job?.createdby,   application?.status   , application?.applicant?._id , application?._id)}
+      className="flex items-center justify-center gap-1 text-blue-600 hover:text-blue-800 transition"
+      title="Start Chat"
+    >
+      <span className="text-lg">💬</span>
+      {/* Online/Offline Dot (optional)
+      {isRecruiterOnline(application?.job?.recruiter?._id) ? (
+        <span className="h-2 w-2 bg-green-500 rounded-full"></span>
+      ) : (
+        <span className="h-2 w-2 bg-gray-400 rounded-full"></span>
+      )}*/}
+    </button>
+  ) : (
+    <span className="text-gray-400">–</span>
+  )} 
+</td>
                   </tr>
                 ))
               ) : (

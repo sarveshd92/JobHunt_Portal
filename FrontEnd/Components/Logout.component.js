@@ -35,7 +35,7 @@ const Logout = () => {
       );
 
       console.log("result->", result);
-      if (result.data.success) {
+      if (result?.data?.success) {
         dispatch(clearuserdata_global());
      
         toast.success(result.data.message);
@@ -44,7 +44,7 @@ const Logout = () => {
        // setuserdata(null); // Using null for clarity
         //setuser(null);
         //setbio(null);
-        navigate("/"); // Navigate immediately after success
+        navigate("/login"); // Navigate immediately after success
       } else {
         toast.error(result.data.message);
         setLogoutMessage("Logout failed. Please try again.");

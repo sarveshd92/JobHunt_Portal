@@ -20,9 +20,6 @@ const handlechange=(e)=>{
 
 
     return (
-
-
-
         <div className="text-center my-4 px-4">
       <div className="flex flex-col gap-2 justify-center items-center">
         <span className="font-medium text-l rounded-full border-black text-[#f83002] bg-gray-100 py-2 px-4">

@@ -43,12 +43,12 @@ const Profile = () => {
     // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("going this data to backend",formData)
+        // console.log("going this data to backend",formData)
             fetchdata();
         setPopup(false); // Close popup after submission
     };
 
-    console.log("profile compoentent->",userdata_global)
+    // console.log("profile compoentent->",userdata_global)
     const fetchdata=async()=>{
 
              try {
@@ -64,16 +64,13 @@ const Profile = () => {
                     dispatch(setuserdata_global(data.data))
                  }
              } catch (error) {
-                console.log(error?.response)
+                // console.log(error?.response)
                 toast.error(`${error.message}`);
                 
              }
              
     }
-//     const inputfile=(e)=>{
-//   console.log("svg clicll");
-//   fileinputref.current.click()
-//     }
+
 
 
 
@@ -92,7 +89,7 @@ const handleinputfile = (e) => {
             resumeUpload: file,
         }));
 
-        console.log(formData)
+        // console.log(formData)
     } else {
         setFormData({ ...formData, resumeUpload: userdata_global?.Profile?.resume });
     }
@@ -103,7 +100,7 @@ const handleinputfile = (e) => {
             const data=await axios.get("http://localhost:8000/api/v1/application/appliedjobs",{
                 withCredentials:true
             });
-            console.log("jobdata",data)
+            // console.log("jobdata",data)
             setapplidata(data?.data?.result)
         
         } catch (error) {

@@ -1,8 +1,9 @@
 import { v2 as cloudinary } from 'cloudinary';
 import fs from "fs";
 import dotenv from 'dotenv';
+import { Console } from 'console';
 dotenv.config({
-    path:'D:/Job Portal/BackEnd/.env'
+    path:'D:/Job Portal/JobHunt-Portal/BackEnd/.env'
 });
 
 cloudinary.config({ 
@@ -19,7 +20,7 @@ const isuploaded=await cloudinary.uploader.upload((filepath),{
     resource_type:"auto",
 } )
 if(isuploaded){
-    console.log(isuploaded);
+    // console.log(isuploaded);
     fs.unlinkSync(filepath)
     return isuploaded;
 }
@@ -27,7 +28,7 @@ fs.unlinkSync(filepath)
 return null;
 
 } catch (error) {
-   console.log("something went wrong on uploading to the server ",error);
+   console.log("something went wrong on uploading to the server ",error?.message);
 fs.unlinkSync(filepath)
 
    return null;

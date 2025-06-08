@@ -1,44 +1,69 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState ,lazy,Suspense} from "react";
 import ReactDom from "react-dom/client";
-import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom"
-// React.createElement("div","id:parent","hi iam h1")
-import Home from "./Components/Home.component.js";
-import Contact from "./Components/Contact.componenet.js";
-
-import NavBar from "./Components/NavBar.component.js";
-import Login from "./Components/Login.component.js";
-import SignUp from "./Components/SignUp.component.js";
-import use_user_info from "./Utils/use_user_info.utils.js";
-import { ToastContainer,Bounce} from "react-toastify";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+ import { ToastContainer,Bounce} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Logout from "./Components/Logout.component.js";
-import { Provider } from "react-redux";
+// React.createElement("div","id:parent","hi iam h1")
+import { lazy } from "react";
+
+// Components
+const Home = lazy(() => import("./Components/Home.component.js"));
+const Contact = lazy(() => import("./Components/Contact.componenet.js"));
+const NavBar = lazy(() => import("./Components/NavBar.component.js"));
+const Login = lazy(() => import("./Components/Login.component.js"));
+const SignUp = lazy(() => import("./Components/SignUp.component.js"));
+const Logout = lazy(() => import("./Components/Logout.component.js"));
+const Jobs = lazy(() => import("./Components/Jobs.component.js"));
+const Profile = lazy(() => import("./Components/Profile.componenet.js"));
+const Job_jobcard_details = lazy(() => import("./Components/Job_jobcard_details.component.js"));
+const Companies = lazy(() => import("./Components/Admin_components/Companies.admin.component.js"));
+const AdminJobs = lazy(() => import("./Components/job_components/AdminJobs.admin.component.js"));
+const Createcompany = lazy(() => import("./Components/Admin_components/Createcompany.admin.component.js"));
+const CreateCompanyDetails = lazy(() => import("./Components/Admin_components/CreateCompanyDetails.admin.component.js"));
+const Createjobpage = lazy(() => import("./Components/job_components/Createjobpage.componenet.js"));
+const AppliedJobs_navbar = lazy(() => import("./Components/AppliedJobs_navbar.component.js"));
+const Job_user_applications = lazy(() => import("./Components/job_components/Job_user_applications.admin.components.js"));
+const SearchResults = lazy(() => import("./Components/SearchResults.home.components.js"));
+const About = lazy(() => import("./Components/About.js"));
+const ChatComponent = lazy(() => import("./Components/ChatComponent.js"));
+const ChatPage = lazy(() => import("./Components/Chat_Admin_page.js"));
+import { RotatingLines } from 'react-loader-spinner'
+// Utils
+// const use_user_info = lazy(() => import("./Utils/use_user_info.utils.js"));
+// const appstore = lazy(() => import("./Utils/Store/appstore.js"));
 import appstore from "./Utils/Store/appstore.js";
-import Jobs from "./Components/Jobs.component.js";
-import Profile from "./Components/Profile.componenet.js";
-import Job_jobcard_details from "./Components/Job_jobcard_details.component.js";
-import Companies from "./Components/Admin_components/Companies.admin.component.js";
-import AdminJobs from "./Components/job_components/AdminJobs.admin.component.js";
-import Createcompany from "./Components/Admin_components/Createcompany.admin.component.js";
-import CreateCompanyDetails from "./Components/Admin_components/CreateCompanyDetails.admin.component.js";
-import Createjobpage from "./Components/job_components/Createjobpage.componenet.js";
-import AppliedJobs_navbar from "./Components/AppliedJobs_navbar.component.js";
-import Job_user_applications from "./Components/job_components/Job_user_applications.admin.components.js";
-import SearchResults from "./Components/SearchResults.home.components.js";
+import use_user_info from "./Utils/use_user_info.utils.js";
+// / ❌ INVALID (Provider is not a default export — don't use lazy for named imports)
+import { Provider } from "react-redux";
+
 
 const MainContainer=()=>{
 
 
 // const{user,bio,userdata1}=useContext(use_user_info);
-          return(
-           
-          <div className="box-border m-0 p-0">
-                <NavBar/>
-                <Outlet/>
-              
+      return (
+  <div className="box-border m-0 p-0">
+    <Suspense
+      fallback={
+        <div className="flex justify-center items-center h-screen">
+ <RotatingLines
+    visible={true}
+    height="96"
+    width="96"
+    strokeWidth="5"
+    animationDuration="0.75"
+    ariaLabel="rotating-lines-loading"
+    wrapperClass="custom-loader"
+  />
+
         </div>
-            
-          )
+      }
+    >
+      <NavBar />
+      <Outlet />
+    </Suspense>
+  </div>
+);
 }
 const AppLayout=
 createBrowserRouter([{
@@ -86,6 +111,13 @@ createBrowserRouter([{
                 path:"/SearchResults",
                 element:<SearchResults/>
         },
+        ,{
+            path:"/aboutme",
+            element:<About/>
+        },
+        { path:'/chat/:recruiterId/:status/:userid/:jobapplication_id',
+            element:<ChatComponent/>
+        },
         ///// for admin components  it starts from here
 
 
@@ -115,6 +147,9 @@ createBrowserRouter([{
             element:<Job_user_applications/>
         
         
+        },
+        {path:'/chat/:userid',
+            element:<ChatPage/>
         }
        
     ]
@@ -138,7 +173,7 @@ const App=()=>{
             
  {/* <use_user_info.Provider value={{user,setuser,bio,setbio,userdata,setuserdata}} > */}
 
-<RouterProvider router={AppLayout}/>
+ <RouterProvider router={AppLayout}/>
 <ToastContainer
 position="bottom-right"
 autoClose={5000}

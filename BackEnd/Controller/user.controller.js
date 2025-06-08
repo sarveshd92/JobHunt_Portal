@@ -6,12 +6,12 @@ import { uploadOnCloudinary } from "../Util/cloudinary.util.js";
 
 export const register = async (req, res) => {
   try {
-    console.log("Register function here");
-    console.log("Request files:", req.file.path);
-    console.log("Request body:", req.body);
+   
+   
+    
 
-    const { fullname, username, email, password, phoneno, role } = req.body;
-
+   const { fullname, username, email, password, phoneno, role,} = req.body;
+console.log(fullname, username, email, password, phoneno, role, req.file)
     if (!fullname || !username || !email || !password || !phoneno || !role) {
       return res.status(400).json({
         status: 400,
@@ -20,6 +20,7 @@ export const register = async (req, res) => {
       });
     }
 
+console.log(role)
     const userResult = await User.findOne({ email });
     if (userResult) {
       return res.status(400).json({
@@ -28,8 +29,8 @@ export const register = async (req, res) => {
         success: false,
       });
     }
-
-    if (!req.file) {
+let resume=req?.file?.path;
+    if (!resume) {
       return res.status(400).json({
         status: 400,
         message: "Resume file is missing",
@@ -37,10 +38,10 @@ export const register = async (req, res) => {
       });
     }
 
-    const resume = req?.file?.path;
-    console.log("Resume path:", resume);
+    const resume_upload= resume;
+    console.log("Resume path:", resume_upload);
 
-    const result = await uploadOnCloudinary(resume);
+    const result = await uploadOnCloudinary(resume_upload);
     if (!result) {
       return res.status(400).json({
         status: 400,
@@ -252,3 +253,17 @@ export const getUsers = async (req, res) => {
     });
   }
 };
+
+
+
+export const userid=async(req,res)=>{
+
+console.log(req)
+        const userid=req.id;
+        if(userid){
+          res.status(200).json({id:userid,success:true,message:"userid fetched successfully"})
+        }
+        else{
+          throw new Error("login again")
+        }
+}

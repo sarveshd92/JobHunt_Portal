@@ -14,7 +14,7 @@ const JobJobcardDetails = () => {
 // const{applications}=useSelector((store)=>store.applicationSlice)
   const [jobDetails, setJobDetails] = useState(null);
   const [status, setStatus] = useState(false);
-  // console.log("application store",applications)
+
   const fetchdata = async () => {
     try {
       const data = await axios.get(
@@ -35,8 +35,7 @@ const JobJobcardDetails = () => {
       } else {
         setStatus(false);
       }
-      console.log("status->", status);
-      console.log("Job Details:", data?.data);
+     
       if (data?.data?.success) {
         setJobDetails(data?.data?.result); // Store the job details
         toast.success(data?.data?.message);
@@ -62,7 +61,7 @@ const JobJobcardDetails = () => {
           withCredentials: true, // Important for sending cookies
         }
       );
-      console.log("Result:", result);
+  
       if (result.data.success) {
 
            

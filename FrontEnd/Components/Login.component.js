@@ -36,7 +36,7 @@ const Login=()=>{
                 },
                 withCredentials: true // Important for sending cookies and handling sessions
               });
-            //  console.log("result->",result)
+             console.log("result->",result)
 
              
             //  console.log(result.data.data)
@@ -44,7 +44,7 @@ const Login=()=>{
 
               
                 dispatch(setuserdata_global(result?.data))
-                // console.log("from login application store",applications)
+             
                 toast.success(result.data.message, {
                   position: "bottom-right",
                   autoClose: 5000,

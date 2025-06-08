@@ -26,4 +26,8 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.custom-loader svg path {
+  stroke: #6a38c2 !important;
+}
 /*# sourceMappingURL=index.75a90472.css.map */
