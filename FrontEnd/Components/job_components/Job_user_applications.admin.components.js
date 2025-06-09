@@ -15,7 +15,7 @@ const JobUserApplications = () => {
            
             
         } catch (error) {
-            console.error("Error fetching companies:", error);
+            console.log("Error fetching companies:", error);
         }
     };
 

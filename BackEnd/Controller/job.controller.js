@@ -5,7 +5,7 @@ export const postjob=async(req,res)=>{
      try {
          const  userid=req.id;
               const finduser= await User.findOne({_id:userid});
-              console.log(finduser)
+            //   console.log(finduser)
          const{ title,
             description,
             requirement,
@@ -16,15 +16,15 @@ export const postjob=async(req,res)=>{
             noofposition,
             company,
             createdby}=req.body;
-            console.log(title,)
-            console.log(description,)
-            console.log(requirement,)
-            console.log(location,)
-            console.log(salary,)
-            console.log(jobType,)
-            console.log(noofposition,)
-            console.log(company,)
-            console.log(experience,)
+            // console.log(title,)
+            // console.log(description,)
+            // console.log(requirement,)
+            // console.log(location,)
+            // console.log(salary,)
+            // console.log(jobType,)
+            // console.log(noofposition,)
+            // console.log(company,)
+            // console.log(experience,)
             // console.log(createdby)
                if( 
                 !title||
@@ -114,7 +114,7 @@ export const getjobsbyid=async(req,res)=>{
  
     
     const companydata = await company.find({userid:req.id})
-  console.log(companydata)
+//   console.log(companydata)
      const jobid=req.params.jobid;
      
             const result=await job.findOne({_id:jobid}).populate({
@@ -122,7 +122,7 @@ export const getjobsbyid=async(req,res)=>{
                 populate:'applicant',
                 
             }).populate({path:'company',select:'name'})
-           console.log(result.company.name)
+        //    console.log(result.company.name)
             if(!result){
                 return res.status(200).json({
                     message:"No jobs found entered id is incorrect",
@@ -131,7 +131,7 @@ export const getjobsbyid=async(req,res)=>{
 
             }
            const valid_company= companydata.filter((cc,idx)=>cc.name==result.company.name)
-     console.log("company valid haii yaa nahii ",valid_company)
+    //  console.log("company valid haii yaa nahii ",valid_company)
            if(valid_company.length!=0 ){
             return res.status(200).json({
                 message:"job found",
@@ -146,7 +146,7 @@ export const getjobsbyid=async(req,res)=>{
             })}
             
    } catch (error) {
-    console.log(error.message)
+    // console.log(error.message)
     return res.status(500).json({
         message:`Error-> ${error.message}`,
         success:false,
@@ -185,16 +185,16 @@ return res.status(200).json({
 export const appliedjobstatus=async(req,res)=>{
  try {
      const userid=req.id;
-     console.log(req.id);
+    //  console.log(req.id);
      
      const {jobid}=req.body;
-     console.log(userid);
-     console.log(jobid);
+    //  console.log(userid);
+    //  console.log(jobid);
      const result=await job.findOne({"_id":jobid}).populate({
         path:'application',
         match:{applicant:userid}
      })
-     console.log(result)
+    //  console.log(result)
    
    
     return res.status(200).json({
@@ -216,9 +216,9 @@ export const appliedjobstatus=async(req,res)=>{
 export const searchalljobs=async(req,res)=>{
     try {
             // const {search}=req.body
-            console.log("yaha aatoh gaya",req.body)
+            // console.log("yaha aatoh gaya",req.body)
             const {keyword}=req.body
-            console.log(keyword)
+            // console.log(keyword)
             const search={
                 $or:[{
                     title:{$regex:keyword,$options:"i"},
@@ -257,9 +257,9 @@ export const deletejobbyid=async(req,res)=>{
 
     try {
         const{jobid}=req.params;
-        console.log(jobid);
+        // console.log(jobid);
         const result=await job.deleteOne({$and:[{_id:jobid},{'createdby._id':req.id}]});
-        console.log(result)
+        // console.log(result)
             return res.status(200).json({
                 message:"job deleted successfully",
                  result,
@@ -280,12 +280,12 @@ export const deletejobbyid=async(req,res)=>{
 export const getsearchjobs=async(req,res)=>{
     try {
             let keyword=req.query.keyword||"";
-             console.log("yaha aatoh gaya",keyword)
+            //  console.log("yaha aatoh gaya",keyword)
              if(keyword){
                 keyword=keyword.split(" ");
                 keyword=keyword[0].toLowerCase();
              }
-             console.log(keyword)
+            //  console.log(keyword)
             const search={
                 $or:[{
                     title:{$regex:keyword,$options:"i"},

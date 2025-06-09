@@ -7,7 +7,7 @@ try {
      const{compName,logo,location,website,description}=req.body;
      const{userid}=req.id;
     
-     console.log(req.body)
+    //  console.log(req.body)
      if(!compName){
         return res.status(401).json({
             message:"please fill all the mandatory fields",
@@ -26,7 +26,7 @@ try {
        name:compName,logo,location,website,description
     })
     await result.save({validateBeforeSave:false})
-    console.log("result from backend(comapny register",result)
+    // console.log("result from backend(comapny register",result)
    
         // const result= await company.create({
         //     name,logo,location,website,description,userid:req.id
@@ -71,8 +71,8 @@ export const getcompany=async(req,res)=>{
 export const getcompanybyid=async(req,res)=>{
    try {
      const {id}=req.params;
-     console.log(req.params);
-     console.log(id);
+    //  console.log(req.params);
+    //  console.log(id);
    const getcomapany= await company.findOne({_id:id})
    if(!getcompany){
      return res.status(400).json({
@@ -100,7 +100,7 @@ export const updatedetails=async(req,res)=>{
        
        
       
-       console.log("files from update controller",req.file)
+    //    console.log("files from update controller",req.file)
       
       if(req.file) {
         const datafile=await uploadOnCloudinary(req.file?.path)
@@ -131,9 +131,9 @@ export const updatedetails=async(req,res)=>{
 export const deleteallbyid=async(req,res)=>{
            try {
              
-             console.log(req.id);
+            //  console.log(req.id);
              const data= await company.deleteMany({userid:req.id})
-             console.log(data)
+            //  console.log(data)
                 const result=await company.find({userid:req.id})
              return res.status(200).json({
                 message:"data deleted successfully",
@@ -153,7 +153,7 @@ export const deleteallbyid=async(req,res)=>{
 export const getusercomp= async(req,res)=>{
    try {
      const id=req.id;
-     console.log(id)
+    //  console.log(id)
      if(!id){
         return res.status(200).json({
             message:"please login again",
@@ -191,7 +191,7 @@ export const updatedetailsonly=async(req,res)=>{
         const to_update={name,description,location,website}
      
         
-        console.log(req.params.id)
+        // console.log(req.params.id)
        
        
      

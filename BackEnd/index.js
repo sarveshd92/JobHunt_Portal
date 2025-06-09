@@ -48,7 +48,7 @@ io.use( async(socket, next) => {
   next();
 });
 io.on('connection', (socket) => {
-  console.log('User connected:', socket?.user?.userid);
+  // console.log('User connected:', socket?.user?.userid);
 
   // ✅ Handle send-message
  socket.on("join-room", async (roomId) => {
@@ -67,7 +67,7 @@ senderId= socket.user.userid
    }
      const saved = await Message.create({
        room:room, content:message, senderId:senderId , receiverId: receiverId});
-    console.log(`Message from ${socket.user.userid} to room ${room}:`, message);
+    // console.log(`Message from ${socket.user.userid} to room ${room}:`, message);
     
     // Send to others in the room
     socket.to(room).emit('receive-message', message);
@@ -78,7 +78,7 @@ senderId= socket.user.userid
 
   // ✅ Handle disconnect
   socket.on('disconnect', () => {
-    console.log('User disconnected:', socket.user.userid);
+    // console.log('User disconnected:', socket.user.userid);
   });
 });
 
@@ -131,9 +131,9 @@ app.use((err,req,res,next)=>{
 server.listen(PORT, () => {
    try {
      DB_Connect()
-   console.log(`Server is running on port ${PORT}`);
+  //  console.log(`Server is running on port ${PORT}`);
    } catch (error) {
-    console.log(error)
+    // console.log(error)
    }
 });
 

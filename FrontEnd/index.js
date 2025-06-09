@@ -163,9 +163,9 @@ const root=ReactDom.createRoot(document.querySelector(".root"));
 
 const App=()=>{
 
-    const [user,setuser]=useState("Guest");
-    const[bio,setbio]=useState(" An enthusiastic learner eager to explore and innovate.");
-    const[userdata,setuserdata]=useState("")
+    // const [user,setuser]=useState("Guest");
+    // const[bio,setbio]=useState(" An enthusiastic learner eager to explore and innovate.");
+    // const[userdata,setuserdata]=useState("")
 
     return (
         <Provider store={appstore}>

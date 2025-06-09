@@ -1,25 +1,35 @@
 {
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Real-Time MERN Job Hunt Portal - Frontend",
+  "author": "Sarvesh Deshpande",
+  "license": "ISC",
+  "scripts": {
+    "start": "parcel index.html",
+    "prod": "parcel build index.html"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "autoprefixer": "^10.4.19",
     "axios": "^1.7.4",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "embla-carousel-react": "^8.1.8",
-    "parcel": "^2.12.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.1",
+    "parcel": "^2.15.2",
     "postcss": "^8.4.40",
     "postcss-cli": "^11.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-loader-spinner": "^6.1.6",
-    "react-redux": "^9.1.2",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.25.1",
     "react-toastify": "^10.0.5",
     "redux": "^5.0.1",
-    "socket.io-client": "^4.8.1"
+    "socket.io-client": "^4.8.1",
+    "websocket": "^1.0.35"
   },
-  "name": "frontend",
-  "version": "1.0.0",
-  "main": "index.js",
   "devDependencies": {
     "@types/node": "^22.0.0",
     "assert": "^2.1.0",
@@ -29,12 +39,5 @@
     "tailwindcss": "^3.4.7",
     "util": "^0.12.5"
   },
-  "scripts": {
-    "start": "parcel index.html",
-    "prod": "parcel build index.html"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "keywords": []
 }

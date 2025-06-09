@@ -7,8 +7,8 @@ export const applyjob = async (req, res) => {
         const userid = req.id;  // Ensure this is correct based on your auth middleware
         const jobid = req.params.id;  // Use jobid instead of id if that's the actual param name
 
-        console.log("Job ID:", jobid);
-        console.log("User ID:", userid);
+        // console.log("Job ID:", jobid);
+        // console.log("User ID:", userid);
 
         // Check if user has already applied for the job
         const existingApplication = await application.findOne({ applicant: userid, job: jobid });
@@ -55,7 +55,7 @@ export const applyjob = async (req, res) => {
 export const appliedjob = async (req, res) => {
     try {
         const userid = req?.id;  // Ensure this is correct based on your auth middleware
-                console.log(req.id)
+                // console.log(req.id)
                 const applications = await application.find({ applicant: userid })
                 .populate({
                   path: 'job',
@@ -96,9 +96,9 @@ export const updatestatus = async (req, res) => {
         const { status,userid} = req.body;
        // const userid = req.id;  // Ensure this is correct based on your auth middleware
         const appid = req.params.id;  // Use appid instead of id if that's the actual param name
-            console.log("status",status)        // Find the application
-            console.log("appid",req.params)        // Find the application
-            console.log("userid",userid)        // Find the application
+            // console.log("status",status)        // Find the application
+            // console.log("appid",req.params)        // Find the application
+            // console.log("userid",userid)        // Find the application
         const applicationFound = await application.findOne({ applicant: userid, _id: appid });
         if (!applicationFound) {
             return res.status(404).json({

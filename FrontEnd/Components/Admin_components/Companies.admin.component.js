@@ -36,7 +36,7 @@ const Companies = () => {
             setOrgCompanies(response?.data?.result || []);
             setCompanies(response?.data?.result || []);
         } catch (error) {
-            console.error("Error fetching companies:", error);
+            console.log("Error fetching companies:", error);
         }
     };
 
