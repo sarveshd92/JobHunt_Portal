@@ -114,7 +114,9 @@ app.use(cookieParser());
 
 
 // API SETUP
-
+app.get("/welcome",(req,res)=>{
+  return res.status(200).json({success:true,message:"welcome user"})
+})
 app.use("/api/v1/user",userrouter)
 app.use("/api/v1/company",companyrouter)
 app.use("/api/v1/job",jobrouter)
@@ -131,7 +133,7 @@ app.use((err,req,res,next)=>{
 server.listen(PORT, () => {
    try {
      DB_Connect()
-  //  console.log(`Server is running on port ${PORT}`);
+   console.log(`Server is running on port ${PORT}`);
    } catch (error) {
     // console.log(error)
    }
