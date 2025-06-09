@@ -9,3 +9,5 @@ build/
 # Cache and build folders
 frontend/.parcel-cache/
 .parcel-cache/
+FrontEnd\dist
+FrontEnd\dist\index.html
