@@ -20,7 +20,7 @@ dotenv.config({
 });
 // console.log("heyy->>>",process.env)
 const app = express();
-const PORT = process.env.PORT||6000;
+const PORT = process.env.PORT||7777;
 // console.log(PORT)
 
 app.use(express.json());
