@@ -6,6 +6,7 @@ import { setcompany } from "../../Utils/Store/companySlice";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { localhost } from "../../Utils/constant";
 
 const Createcompany=()=>{
     const navigate=useNavigate();
@@ -20,7 +21,7 @@ const Createcompany=()=>{
     const handleclick=async()=>{
 
        try {
-         const result=await axios.post("http://localhost:8000/api/v1/company/register",{compName},{ withCredentials:true,
+         const result=await axios.post( localhost + "/api/v1/company/register",{compName},{ withCredentials:true,
              Headers:{
                  "Content-Type":"application/json",
              }}

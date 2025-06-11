@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import applicationSlice, { addapplication } from "../Utils/Store/applicationSlice";
+import { localhost } from "../Utils/constant";
 
 const JobJobcardDetails = () => {
 
@@ -18,12 +19,12 @@ const JobJobcardDetails = () => {
   const fetchdata = async () => {
     try {
       const data = await axios.get(
-        `http://localhost:8000/api/v1/job/getjobbyid/${jobid}`,
+        `${localhost}/api/v1/job/getjobbyid/${jobid}`,
         { withCredentials: true }
       );
 
       const data1 = await axios.post(
-        `http://localhost:8000/api/v1/job/appliedjobstatus`,
+        `${localhost}/api/v1/job/appliedjobstatus`,
         { jobid },
         { withCredentials: true }
       );

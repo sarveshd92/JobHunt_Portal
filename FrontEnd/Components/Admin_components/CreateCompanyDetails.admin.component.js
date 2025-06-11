@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setloading } from '../../Utils/Store/authslice';
+import { localhost } from '../../Utils/constant';
 
 const CreateCompanyDetails = () => {
     const { compid } = useParams();
@@ -23,7 +24,7 @@ const CreateCompanyDetails = () => {
 
     const fetchdata = async () => {
         try {
-            const data = await axios.get(`http://localhost:8000/api/v1/company/getcompany/${compid}`);
+            const data = await axios.get(`${localhost}/api/v1/company/getcompany/${compid}`);
             setcompanydetails(data?.data?.getcomapany);
         } catch (error) {
             console.log(error);

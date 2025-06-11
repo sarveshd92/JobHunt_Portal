@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { localhost } from "../../Utils/constant";
 
 const Companies = () => {
     const [orgCompanies, setOrgCompanies] = useState([]);
@@ -30,7 +31,7 @@ const Companies = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/api/v1/company/usercomp", {
+            const response = await axios.get( localhost +"/api/v1/company/usercomp", {
                 withCredentials: true,
             });
             setOrgCompanies(response?.data?.result || []);

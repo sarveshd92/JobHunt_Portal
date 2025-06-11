@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { setloading } from "../Utils/Store/authslice.js";
+import { localhost } from "../Utils/constant.js";
 
 const SignUp = () => {
   const fullname = useRef(null);
@@ -34,7 +35,7 @@ const SignUp = () => {
       dispatch(setloading(true));
 
       const result = await axios.post(
-        "http://localhost:8000/api/v1/user/register",
+        localhost+"/api/v1/user/register",
         formData,
         {
           headers: {

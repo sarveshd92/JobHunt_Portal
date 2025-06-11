@@ -3,6 +3,7 @@ import Home_Latest_Job_Card from "./Home_Latest_Job_Card.component.js";
 import { useEffect } from "react";
 import axios from "axios"
 import { useState } from "react";
+import { localhost } from "../Utils/constant.js";
 
 const SearchResults = () => {
     const { getalljobs } = useSelector((store) => store.jobSlice);
@@ -11,7 +12,7 @@ const SearchResults = () => {
 const[searchdata,setsearchdata]=useState([])
 const fetchdata=async()=>{
             try {
-                const data=await axios.get(`http://localhost:8000/api/v1/job/getsearchjobs/?keyword=${search}`)
+                const data=await axios.get(`${localhost}/api/v1/job/getsearchjobs/?keyword=${search}`)
                 console.log(data?.data?.result)
                 setsearchdata(data?.data?.result)
             } catch (error) {

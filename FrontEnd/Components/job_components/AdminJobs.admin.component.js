@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Usealljobs from '../../Hooks/Usealljobs.hook.js';
 import axios from 'axios';
+import { localhost } from '../../Utils/constant.js';
 
 const AdminJobs = () => {
     const { jobs, loading, error } = Usealljobs();
@@ -24,7 +25,7 @@ const AdminJobs = () => {
 
     const handleSearch = async () => {
         try {
-            const response = await axios.post("http://localhost:8000/api/v1/job/searchjob", { keyword: search }, {
+            const response = await axios.post( localhost +"/api/v1/job/searchjob", { keyword: search }, {
                 withCredentials: true,
                 headers: {
                     "Content-Type": "application/json",

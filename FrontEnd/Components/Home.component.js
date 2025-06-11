@@ -8,6 +8,7 @@ import Home_Footer from "./Home_Footer.component.js";
 import {setgetalljobs} from "../Utils/Store/jobSlice.js"
 import { addapplication } from "../Utils/Store/applicationSlice.js";
 import { useNavigate } from "react-router-dom";
+import { localhost } from "../Utils/constant.js";
 
 
 
@@ -23,7 +24,7 @@ const Home = () => {
     // console.log("home->>",applications)
   const fetchData = async () => {
     try {
-      const result = await axios.get("http://localhost:8000/api/v1/job//getalljobs", { withCredentials: true });
+      const result = await axios.get(  localhost +"/api/v1/job//getalljobs", { withCredentials: true });
       
       if (result) {
               dispatch(setgetalljobs(result?.data));

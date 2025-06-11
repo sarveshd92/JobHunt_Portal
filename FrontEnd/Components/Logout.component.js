@@ -7,6 +7,7 @@ import { Oval } from 'react-loader-spinner';
 import { useDispatch, useSelector } from "react-redux";
 import {setuserdata_global,clearuserdata_global} from "../Utils/Store/userslice"
 import applicationSlice, {removeall, addapplication } from "../Utils/Store/applicationSlice";
+import { localhost } from "../Utils/constant";
 
 // import { removeall } from "../Utils/Store/applicationSlice"
 
@@ -24,7 +25,7 @@ const Logout = () => {
      
 
       const result = await axios.post(
-        "http://localhost:8000/api/v1/user/logout",
+         localhost +"/api/v1/user/logout",
         {},
         {
           headers: {

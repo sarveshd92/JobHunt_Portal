@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { localhost } from "../../Utils/constant";
 
 const JobUserApplications = () => {
     const [companies, setCompanies] = useState([]);
@@ -23,7 +24,7 @@ const JobUserApplications = () => {
         try {
             console.log(appid, "->", userid);
             const response = await axios.put(
-                `http://localhost:8000/api/v1/application/updatestatus/${appid}`,
+                `${localhost}/api/v1/application/updatestatus/${appid}`,
                 { status, userid },
                 {
                     withCredentials: true,

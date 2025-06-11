@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { localhost } from '../../Utils/constant';
 
 const Createjobpage = () => {
     const [title, setTitle] = useState('');
@@ -23,7 +24,7 @@ const Createjobpage = () => {
     useEffect(() => {
         const fetchCompanies = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/v1/company/get/company', {
+                const response = await axios.get(  localhost + '/api/v1/company/get/company', {
                     withCredentials: true,
                 });
                 setCompanies(response?.data?.result);

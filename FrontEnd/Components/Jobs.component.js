@@ -1,6 +1,7 @@
 import Job_jobcard from "./Job_jobcard.component.js";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { localhost } from "../Utils/constant.js";
 
 const Jobs = () => {
   const jobcard = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -14,7 +15,7 @@ const Jobs = () => {
 
   const fetchdata = async () => {
     try {
-      const result = await axios.get("http://localhost:8000/api/v1/job/getalljobs", { withCredentials: true });
+      const result = await axios.get( localhost+ "/api/v1/job/getalljobs", { withCredentials: true });
       setgetalljob(result?.data?.result || []);
       alljobref.current = result?.data?.result || [];
     } catch (error) {

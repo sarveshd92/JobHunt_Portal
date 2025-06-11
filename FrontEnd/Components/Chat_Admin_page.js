@@ -10,7 +10,7 @@ const ChatPage = () => {
     const [isTyping, setIsTyping] = useState(false);
 
     useEffect(() => {
-        socketRef.current = io("http://localhost:8000", {
+        socketRef.current = io(localhost, {
             withCredentials: true
         });
       socketRef.current.emit("join-room", userid);

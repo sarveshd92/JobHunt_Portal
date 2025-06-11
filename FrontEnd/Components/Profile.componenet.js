@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import AppliedJobsNavbar from "./AppliedJobs_navbar.component.js";
 import { addapplication } from "../Utils/Store/applicationSlice.js";
+import { localhost } from "../Utils/constant.js";
 // import { updateProfile } from "./profileSlice"; // Replace with your actual action
 
 const Profile = () => {
@@ -52,7 +53,7 @@ const Profile = () => {
     const fetchdata=async()=>{
 
              try {
-                 const data=await axios.post("http://localhost:8000/api/v1/user/profile/update",formData,{
+                 const data=await axios.post( localhost +"/api/v1/user/profile/update",formData,{
                    headers:{
                        "Content-Type":"multipart/form-data",},
                        withCredentials:true,

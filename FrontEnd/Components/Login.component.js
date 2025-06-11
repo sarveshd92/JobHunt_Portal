@@ -10,6 +10,7 @@ import { setloading } from "../Utils/Store/authslice.js";
 import appstore from "../Utils/Store/appstore.js";
 import { setuserdata_global } from "../Utils/Store/userslice.js";
 import {addapplication} from "../Utils/Store/applicationSlice.js";
+import { localhost } from "../Utils/constant.js";
 const Login=()=>{
      
 
@@ -30,7 +31,7 @@ const Login=()=>{
          try {
          dispatch(setloading(true));
 
-            const result = await axios.post("http://localhost:8000/api/v1/user/login", data, {
+            const result = await axios.post( localhost + "/api/v1/user/login", data, {
                 headers: {
                   "Content-Type": "application/json"
                 },
