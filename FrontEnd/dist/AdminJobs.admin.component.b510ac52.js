@@ -1101,6 +1101,12 @@ $RefreshReg$(_c, "Usealljobs");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"jMk1U","axios":"kooH4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["c6blC"], null, "parcelRequire10c2", {})
+},{"react":"jMk1U","axios":"kooH4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"25sJh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "localhost", ()=>localhost);
+const localhost = "http://localhost:8000"; // /
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["c6blC"], null, "parcelRequire10c2", {})
 
 //# sourceMappingURL=AdminJobs.admin.component.b510ac52.js.map

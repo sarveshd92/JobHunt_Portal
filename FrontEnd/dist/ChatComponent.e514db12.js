@@ -680,6 +680,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 var _socketIoClient = require("socket.io-client");
+var _constant = require("../Utils/constant");
 var _s = $RefreshSig$();
 const ChatComponent = ()=>{
     _s();
@@ -691,7 +692,7 @@ const ChatComponent = ()=>{
     ;
     const [isTyping, setIsTyping] = (0, _react.useState)(false);
     (0, _react.useEffect)(()=>{
-        socketRef.current = (0, _socketIoClient.io)("http://localhost:8000", {
+        socketRef.current = (0, _socketIoClient.io)((0, _constant.localhost), {
             withCredentials: true
         });
         socketRef.current.emit("join-room", userid);
@@ -758,7 +759,7 @@ const ChatComponent = ()=>{
                 children: "\uD83D\uDCAC Simple Chat"
             }, void 0, false, {
                 fileName: "Components/ChatComponent.js",
-                lineNumber: 83,
+                lineNumber: 84,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -772,7 +773,7 @@ const ChatComponent = ()=>{
                     children: "No messages yet."
                 }, void 0, false, {
                     fileName: "Components/ChatComponent.js",
-                    lineNumber: 92,
+                    lineNumber: 93,
                     columnNumber: 11
                 }, undefined) : messages.map((msg, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: `mb-2 flex ${msg.senderId === userid ? "justify-end" : "justify-start"}`,
@@ -781,17 +782,17 @@ const ChatComponent = ()=>{
                             children: msg.content
                         }, void 0, false, {
                             fileName: "Components/ChatComponent.js",
-                            lineNumber: 101,
+                            lineNumber: 102,
                             columnNumber: 15
                         }, undefined)
                     }, idx, false, {
                         fileName: "Components/ChatComponent.js",
-                        lineNumber: 95,
+                        lineNumber: 96,
                         columnNumber: 13
                     }, undefined))
             }, void 0, false, {
                 fileName: "Components/ChatComponent.js",
-                lineNumber: 86,
+                lineNumber: 87,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -805,7 +806,7 @@ const ChatComponent = ()=>{
                         className: "flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                     }, void 0, false, {
                         fileName: "Components/ChatComponent.js",
-                        lineNumber: 117,
+                        lineNumber: 118,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -814,19 +815,19 @@ const ChatComponent = ()=>{
                         children: "Send"
                     }, void 0, false, {
                         fileName: "Components/ChatComponent.js",
-                        lineNumber: 124,
+                        lineNumber: 125,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Components/ChatComponent.js",
-                lineNumber: 116,
+                lineNumber: 117,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "Components/ChatComponent.js",
-        lineNumber: 82,
+        lineNumber: 83,
         columnNumber: 5
     }, undefined);
 };
@@ -845,6 +846,12 @@ $RefreshReg$(_c, "ChatComponent");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router-dom":"61z4w","socket.io-client":"24OPJ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["5WLVl"], null, "parcelRequire10c2", {})
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router-dom":"61z4w","socket.io-client":"24OPJ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../Utils/constant":"25sJh"}],"25sJh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "localhost", ()=>localhost);
+const localhost = "http://localhost:8000"; // /
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["5WLVl"], null, "parcelRequire10c2", {})
 
 //# sourceMappingURL=ChatComponent.e514db12.js.map

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
+import { localhost } from "../Utils/constant";
 
 const ChatPage = () => {
     const { userid } = useParams();

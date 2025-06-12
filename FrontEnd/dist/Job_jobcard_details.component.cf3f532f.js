@@ -691,13 +691,13 @@ const JobJobcardDetails = ()=>{
     _s();
     const dispatch = (0, _reactRedux.useDispatch)();
     const { jobid } = (0, _reactRouterDom.useParams)(); // Ensure jobid matches your backend route
-    console.log("Job ID:", jobid);
+    // console.log("Job ID:", jobid);
     // const{applications}=useSelector((store)=>store.applicationSlice)
     const [jobDetails, setJobDetails] = (0, _react.useState)(null);
     const [status, setStatus] = (0, _react.useState)(false);
     const fetchdata = async ()=>{
         try {
-            const data = await (0, _axiosDefault.default).get(`${(0, _constant.localhost)}/api/v1/job/getjobbyid/${jobid}`, {
+            const data = await (0, _axiosDefault.default).get(`${(0, _constant.localhost)}/api/v1/job/getjobbyidbyuser/${jobid}`, {
                 withCredentials: true
             });
             const data1 = await (0, _axiosDefault.default).post(`${(0, _constant.localhost)}/api/v1/job/appliedjobstatus`, {
@@ -708,7 +708,7 @@ const JobJobcardDetails = ()=>{
             // console.log("data1->", data1?.data?.result?.application);
             if (data1?.data?.result?.application.length > 0) {
                 setStatus(true);
-                const application = await (0, _axiosDefault.default).get("http://localhost:8000/api/v1/application/appliedjobs", {
+                const application = await (0, _axiosDefault.default).get((0, _constant.localhost) + "/api/v1/application/appliedjobs", {
                     withCredentials: true
                 });
                 dispatch((0, _applicationSlice.addapplication)(application.data.result));
@@ -721,11 +721,12 @@ const JobJobcardDetails = ()=>{
             (0, _reactToastify.toast).error("Session expired. Please log in again.");
         }
     };
+    console.log("details of job ", jobDetails);
     const handleClick = async (e)=>{
         e.preventDefault();
         try {
             console.log("Applying for job...");
-            const result = await (0, _axiosDefault.default).post(`http://localhost:8000/api/v1/application/applyjob/${jobid}`, {}, {
+            const result = await (0, _axiosDefault.default).post(`${(0, _constant.localhost)}/api/v1/application/applyjob/${jobid}`, {}, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -744,6 +745,7 @@ const JobJobcardDetails = ()=>{
     }, [
         status
     ]); // Empty dependency array to ensure this runs only once
+    console.log(jobDetails?.company);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md",
         children: jobDetails ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -992,6 +994,12 @@ $RefreshReg$(_c, "JobJobcardDetails");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","axios":"kooH4","react":"jMk1U","react-redux":"hbNxT","react-router-dom":"61z4w","react-toastify":"2rAbP","../Utils/Store/applicationSlice":"6Rs3f","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../Utils/constant":"25sJh"}]},["9v93s"], null, "parcelRequire10c2", {})
+},{"react/jsx-dev-runtime":"dVPUn","axios":"kooH4","react":"jMk1U","react-redux":"hbNxT","react-router-dom":"61z4w","react-toastify":"2rAbP","../Utils/Store/applicationSlice":"6Rs3f","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../Utils/constant":"25sJh"}],"25sJh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "localhost", ()=>localhost);
+const localhost = "http://localhost:8000"; // /
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["9v93s"], null, "parcelRequire10c2", {})
 
 //# sourceMappingURL=Job_jobcard_details.component.cf3f532f.js.map

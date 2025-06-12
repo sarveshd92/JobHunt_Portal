@@ -813,7 +813,7 @@ const AppliedJobsNavbar = ({ applications })=>{
                                                     children: "\u2013"
                                                 }, void 0, false, {
                                                     fileName: "Components/AppliedJobs_navbar.component.js",
-                                                    lineNumber: 78,
+                                                    lineNumber: 73,
                                                     columnNumber: 5
                                                 }, undefined),
                                                 " "
@@ -835,12 +835,12 @@ const AppliedJobsNavbar = ({ applications })=>{
                                     children: "No jobs applied"
                                 }, void 0, false, {
                                     fileName: "Components/AppliedJobs_navbar.component.js",
-                                    lineNumber: 85,
+                                    lineNumber: 80,
                                     columnNumber: 19
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "Components/AppliedJobs_navbar.component.js",
-                                lineNumber: 84,
+                                lineNumber: 79,
                                 columnNumber: 17
                             }, undefined)
                         }, void 0, false, {

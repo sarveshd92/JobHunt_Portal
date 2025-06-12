@@ -875,6 +875,12 @@ $RefreshReg$(_c, "Home_Latest_Job_Card");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react-router-dom":"61z4w","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["lXpdH"], null, "parcelRequire10c2", {})
+},{"react/jsx-dev-runtime":"dVPUn","react-router-dom":"61z4w","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"25sJh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "localhost", ()=>localhost);
+const localhost = "http://localhost:8000"; // /
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["lXpdH"], null, "parcelRequire10c2", {})
 
 //# sourceMappingURL=SearchResults.home.components.e965b9b7.js.map

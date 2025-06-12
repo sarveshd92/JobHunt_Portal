@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
+import { localhost } from '../Utils/constant';
 
 const ChatComponent = () => {
   const socketRef = useRef(null);
@@ -12,7 +13,7 @@ const [isTyping, setIsTyping] = useState(false);
  
 
   useEffect(() => {
-    socketRef.current = io("http://localhost:8000", {
+    socketRef.current = io(localhost, {
       withCredentials: true,
     });
      socketRef.current.emit("join-room", userid);

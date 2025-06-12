@@ -22,7 +22,7 @@ const JobUserApplications = () => {
 
     const handleClick = async (status, appid, userid) => {
         try {
-            console.log(appid, "->", userid);
+       
             const response = await axios.put(
                 `${localhost}/api/v1/application/updatestatus/${appid}`,
                 { status, userid },
@@ -44,7 +44,7 @@ const JobUserApplications = () => {
                 return { ...prevCompanies, application: updatedApplications };
             });
 
-            console.log(response);
+      
         } catch (error) {
             console.error("Error updating status:", error);
         }
@@ -56,7 +56,7 @@ const handleChat=(userid)=>{
     useEffect(() => {
         fetchData();
     }, []);
- console.log(companies)
+
     return (
         <div className="mt-4 p-6 bg-gray-50 min-h-screen">
             <h1 className="text-3xl font-bold text-gray-900 mb-6">
@@ -72,6 +72,7 @@ const handleChat=(userid)=>{
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Chat</th>
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
@@ -139,11 +140,11 @@ const handleChat=(userid)=>{
                                         )}
                                     </td>
                                     <td> <button
-                                                    className="bg-red-500 hover:bg-red-600 text-white rounded-lg p-2 focus:outline-none"
+                                                    className="bg-red-500 hover:bg-red-600 text-white rounded-lg p-2 focus:outline-none text-right"
                                                     onClick={() =>
                                                         handleChat( application?.applicant?._id)
                                                     }
-                                                >💬 {application?.applicant?._id}
+                                                >💬 
                                                     
                                                 </button></td>
                                 </tr>

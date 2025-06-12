@@ -681,6 +681,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouterDom = require("react-router-dom");
 var _socketIoClient = require("socket.io-client");
+var _constant = require("../Utils/constant");
 var _s = $RefreshSig$();
 const ChatPage = ()=>{
     _s();
@@ -690,7 +691,7 @@ const ChatPage = ()=>{
     const [input, setInput] = (0, _react.useState)("");
     const [isTyping, setIsTyping] = (0, _react.useState)(false);
     (0, _react.useEffect)(()=>{
-        socketRef.current = (0, _socketIoClient.io)(localhost, {
+        socketRef.current = (0, _socketIoClient.io)((0, _constant.localhost), {
             withCredentials: true
         });
         socketRef.current.emit("join-room", userid);
@@ -749,7 +750,7 @@ const ChatPage = ()=>{
                 children: "\uD83D\uDCAC Simple Chat"
             }, void 0, false, {
                 fileName: "Components/Chat_Admin_page.js",
-                lineNumber: 69,
+                lineNumber: 70,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -763,7 +764,7 @@ const ChatPage = ()=>{
                     children: "No messages yet."
                 }, void 0, false, {
                     fileName: "Components/Chat_Admin_page.js",
-                    lineNumber: 78,
+                    lineNumber: 79,
                     columnNumber: 11
                 }, undefined) : messages.map((msg, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: `mb-2 flex ${msg.senderId === userid ? "justify-end" : "justify-start"}`,
@@ -772,17 +773,17 @@ const ChatPage = ()=>{
                             children: msg.content
                         }, void 0, false, {
                             fileName: "Components/Chat_Admin_page.js",
-                            lineNumber: 87,
+                            lineNumber: 88,
                             columnNumber: 15
                         }, undefined)
                     }, idx, false, {
                         fileName: "Components/Chat_Admin_page.js",
-                        lineNumber: 81,
+                        lineNumber: 82,
                         columnNumber: 13
                     }, undefined))
             }, void 0, false, {
                 fileName: "Components/Chat_Admin_page.js",
-                lineNumber: 72,
+                lineNumber: 73,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -796,7 +797,7 @@ const ChatPage = ()=>{
                         className: "flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                     }, void 0, false, {
                         fileName: "Components/Chat_Admin_page.js",
-                        lineNumber: 103,
+                        lineNumber: 104,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -805,19 +806,19 @@ const ChatPage = ()=>{
                         children: "Send"
                     }, void 0, false, {
                         fileName: "Components/Chat_Admin_page.js",
-                        lineNumber: 110,
+                        lineNumber: 111,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Components/Chat_Admin_page.js",
-                lineNumber: 102,
+                lineNumber: 103,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "Components/Chat_Admin_page.js",
-        lineNumber: 68,
+        lineNumber: 69,
         columnNumber: 5
     }, undefined);
 };
@@ -836,6 +837,12 @@ $RefreshReg$(_c, "ChatPage");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router-dom":"61z4w","socket.io-client":"24OPJ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["hdKFi"], null, "parcelRequire10c2", {})
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router-dom":"61z4w","socket.io-client":"24OPJ","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../Utils/constant":"25sJh"}],"25sJh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "localhost", ()=>localhost);
+const localhost = "http://localhost:8000"; // /
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["hdKFi"], null, "parcelRequire10c2", {})
 
 //# sourceMappingURL=Chat_Admin_page.4a25326a.js.map

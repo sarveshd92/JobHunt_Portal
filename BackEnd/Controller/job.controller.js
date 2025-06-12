@@ -112,9 +112,9 @@ export const getalljobs=async(req,res)=>{
 export const getjobsbyid=async(req,res)=>{
    try {
  
-    
+   
     const companydata = await company.find({userid:req.id})
-//   console.log(companydata)
+  console.log(companydata)
      const jobid=req.params.jobid;
      
             const result=await job.findOne({_id:jobid}).populate({
@@ -122,7 +122,7 @@ export const getjobsbyid=async(req,res)=>{
                 populate:'applicant',
                 
             }).populate({path:'company',select:'name'})
-        //    console.log(result.company.name)
+            console.log(result.company.name)
             if(!result){
                 return res.status(200).json({
                     message:"No jobs found entered id is incorrect",
@@ -131,7 +131,7 @@ export const getjobsbyid=async(req,res)=>{
 
             }
            const valid_company= companydata.filter((cc,idx)=>cc.name==result.company.name)
-    //  console.log("company valid haii yaa nahii ",valid_company)
+     console.log("company valid haii yaa nahii ",valid_company)
            if(valid_company.length!=0 ){
             return res.status(200).json({
                 message:"job found",
@@ -329,3 +329,30 @@ export const getsearchjobs=async(req,res)=>{
 
 
 
+export const getjobbyidbyuser = async (req,res)=>{
+
+try {
+    const {jobid}=req.params;
+    console.log(jobid);
+   
+
+        const result=await job.findOne({_id:jobid}).populate({
+                path:'application',
+                populate:'applicant',
+                
+            }).populate({path:'company',select:['name','logo','-_id']})
+ return res.status(200).json({
+                message:"job found",
+                result,
+                success:true,
+            })
+ 
+} catch (error) {
+     return res.status(500).json({
+            message:`Error-> ${error.message}`,
+            success:false,
+        })
+}
+
+
+}

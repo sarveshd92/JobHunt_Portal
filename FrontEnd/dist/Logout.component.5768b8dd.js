@@ -782,6 +782,12 @@ $RefreshReg$(_c, "Logout");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router-dom":"61z4w","react-toastify":"2rAbP","axios":"kooH4","react-loader-spinner":"iMFJ7","react-redux":"hbNxT","../Utils/Store/userslice":"PcA9h","../Utils/Store/applicationSlice":"6Rs3f","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../Utils/constant":"25sJh"}]},["bhWez"], null, "parcelRequire10c2", {})
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router-dom":"61z4w","react-toastify":"2rAbP","axios":"kooH4","react-loader-spinner":"iMFJ7","react-redux":"hbNxT","../Utils/Store/userslice":"PcA9h","../Utils/Store/applicationSlice":"6Rs3f","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../Utils/constant":"25sJh"}],"25sJh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "localhost", ()=>localhost);
+const localhost = "http://localhost:8000"; // /
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["bhWez"], null, "parcelRequire10c2", {})
 
 //# sourceMappingURL=Logout.component.5768b8dd.js.map

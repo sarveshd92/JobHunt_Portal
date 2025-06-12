@@ -954,6 +954,12 @@ $RefreshReg$(_c, "SignUp");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","axios":"kooH4","react":"jMk1U","react-redux":"hbNxT","react-router-dom":"61z4w","react-toastify":"2rAbP","../Utils/Store/authslice.js":"4Yr6N","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../Utils/constant.js":"25sJh"}]},["6eHCI"], null, "parcelRequire10c2", {})
+},{"react/jsx-dev-runtime":"dVPUn","axios":"kooH4","react":"jMk1U","react-redux":"hbNxT","react-router-dom":"61z4w","react-toastify":"2rAbP","../Utils/Store/authslice.js":"4Yr6N","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../Utils/constant.js":"25sJh"}],"25sJh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "localhost", ()=>localhost);
+const localhost = "http://localhost:8000"; // /
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["6eHCI"], null, "parcelRequire10c2", {})
 
 //# sourceMappingURL=SignUp.component.2615a5d6.js.map

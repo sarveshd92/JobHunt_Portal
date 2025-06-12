@@ -37725,6 +37725,12 @@ var getPolyfill = require("f2ce5ac0488eb372");
     return polyfill;
 };
 
-},{"6e613ddb8bace1c6":"3Yhek","f2ce5ac0488eb372":"lYeRQ"}]},["kBnVh"], null, "parcelRequire10c2", {})
+},{"6e613ddb8bace1c6":"3Yhek","f2ce5ac0488eb372":"lYeRQ"}],"25sJh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "localhost", ()=>localhost);
+const localhost = "http://localhost:8000"; // /
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["kBnVh"], null, "parcelRequire10c2", {})
 
 //# sourceMappingURL=Login.component.0be4f707.js.map

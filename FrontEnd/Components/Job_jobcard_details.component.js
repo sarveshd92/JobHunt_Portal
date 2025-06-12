@@ -11,7 +11,7 @@ const JobJobcardDetails = () => {
 
   const dispatch=useDispatch()
   const { jobid } = useParams();  // Ensure jobid matches your backend route
-  console.log("Job ID:", jobid);
+  // console.log("Job ID:", jobid);
 // const{applications}=useSelector((store)=>store.applicationSlice)
   const [jobDetails, setJobDetails] = useState(null);
   const [status, setStatus] = useState(false);
@@ -19,7 +19,7 @@ const JobJobcardDetails = () => {
   const fetchdata = async () => {
     try {
       const data = await axios.get(
-        `${localhost}/api/v1/job/getjobbyid/${jobid}`,
+        `${localhost}/api/v1/job/getjobbyidbyuser/${jobid}`,
         { withCredentials: true }
       );
 
@@ -31,7 +31,7 @@ const JobJobcardDetails = () => {
       // console.log("data1->", data1?.data?.result?.application);
       if (data1?.data?.result?.application.length>0) {
         setStatus(true);
-        const application = await axios.get("http://localhost:8000/api/v1/application/appliedjobs", { withCredentials: true });
+        const application = await axios.get(localhost+"/api/v1/application/appliedjobs", { withCredentials: true });
         dispatch(addapplication(application.data.result));
       } else {
         setStatus(false);
@@ -47,13 +47,13 @@ const JobJobcardDetails = () => {
       toast.error("Session expired. Please log in again.");
     }
   };
-
+console.log("details of job ",jobDetails)
   const handleClick = async (e) => {
     e.preventDefault();
     try {
       console.log("Applying for job...");
       const result = await axios.post(
-        `http://localhost:8000/api/v1/application/applyjob/${jobid}`,
+        `${localhost}/api/v1/application/applyjob/${jobid}`,
         {},
         {
           headers: {
@@ -79,7 +79,7 @@ const JobJobcardDetails = () => {
   useEffect(() => {
     fetchdata();
   }, [status]); // Empty dependency array to ensure this runs only once
-
+console.log(jobDetails?.company)
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
       {jobDetails ? (

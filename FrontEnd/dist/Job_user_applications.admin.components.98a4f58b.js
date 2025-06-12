@@ -701,7 +701,6 @@ const JobUserApplications = ()=>{
     };
     const handleClick = async (status, appid, userid)=>{
         try {
-            console.log(appid, "->", userid);
             const response = await (0, _axiosDefault.default).put(`${(0, _constant.localhost)}/api/v1/application/updatestatus/${appid}`, {
                 status,
                 userid
@@ -722,7 +721,6 @@ const JobUserApplications = ()=>{
                     application: updatedApplications
                 };
             });
-            console.log(response);
         } catch (error) {
             console.error("Error updating status:", error);
         }
@@ -733,7 +731,6 @@ const JobUserApplications = ()=>{
     (0, _react.useEffect)(()=>{
         fetchData();
     }, []);
-    console.log(companies);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "mt-4 p-6 bg-gray-50 min-h-screen",
         children: [
@@ -805,6 +802,14 @@ const JobUserApplications = ()=>{
                                         fileName: "Components/job_components/Job_user_applications.admin.components.js",
                                         lineNumber: 74,
                                         columnNumber: 29
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                        children: "Chat"
+                                    }, void 0, false, {
+                                        fileName: "Components/job_components/Job_user_applications.admin.components.js",
+                                        lineNumber: 75,
+                                        columnNumber: 29
                                     }, undefined)
                                 ]
                             }, void 0, true, {
@@ -825,12 +830,12 @@ const JobUserApplications = ()=>{
                                     children: "No applications for this job"
                                 }, void 0, false, {
                                     fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                    lineNumber: 80,
+                                    lineNumber: 81,
                                     columnNumber: 33
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                lineNumber: 79,
+                                lineNumber: 80,
                                 columnNumber: 29
                             }, undefined) : companies.application.map((application, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
                                     className: "hover:bg-gray-50",
@@ -840,7 +845,7 @@ const JobUserApplications = ()=>{
                                             children: application?.applicant?.fullname || "N/A"
                                         }, void 0, false, {
                                             fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                            lineNumber: 87,
+                                            lineNumber: 88,
                                             columnNumber: 37
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -848,7 +853,7 @@ const JobUserApplications = ()=>{
                                             children: application?.applicant?.email || "N/A"
                                         }, void 0, false, {
                                             fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                            lineNumber: 90,
+                                            lineNumber: 91,
                                             columnNumber: 37
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -856,7 +861,7 @@ const JobUserApplications = ()=>{
                                             children: application?.applicant?.phoneno || "N/A"
                                         }, void 0, false, {
                                             fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                            lineNumber: 93,
+                                            lineNumber: 94,
                                             columnNumber: 37
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -869,12 +874,12 @@ const JobUserApplications = ()=>{
                                                 children: application?.applicant?.Profile?.resume ? `${application.applicant.fullname}_Pdf` : "Resume Not Uploaded"
                                             }, void 0, false, {
                                                 fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                                lineNumber: 97,
+                                                lineNumber: 98,
                                                 columnNumber: 41
                                             }, undefined)
                                         }, void 0, false, {
                                             fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                            lineNumber: 96,
+                                            lineNumber: 97,
                                             columnNumber: 37
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -882,7 +887,7 @@ const JobUserApplications = ()=>{
                                             children: application?.applicant?.createdAt?.substr(0, 10) || "N/A"
                                         }, void 0, false, {
                                             fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                            lineNumber: 108,
+                                            lineNumber: 109,
                                             columnNumber: 37
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -895,7 +900,7 @@ const JobUserApplications = ()=>{
                                                         children: "Selected"
                                                     }, void 0, false, {
                                                         fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                                        lineNumber: 114,
+                                                        lineNumber: 115,
                                                         columnNumber: 49
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -904,7 +909,7 @@ const JobUserApplications = ()=>{
                                                         children: "Rejected"
                                                     }, void 0, false, {
                                                         fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                                        lineNumber: 123,
+                                                        lineNumber: 124,
                                                         columnNumber: 49
                                                     }, undefined)
                                                 ]
@@ -914,44 +919,41 @@ const JobUserApplications = ()=>{
                                                 children: application.status
                                             }, void 0, false, {
                                                 fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                                lineNumber: 133,
+                                                lineNumber: 134,
                                                 columnNumber: 45
                                             }, undefined)
                                         }, void 0, false, {
                                             fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                            lineNumber: 111,
+                                            lineNumber: 112,
                                             columnNumber: 37
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                             children: [
                                                 " ",
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                    className: "bg-red-500 hover:bg-red-600 text-white rounded-lg p-2 focus:outline-none",
+                                                    className: "bg-red-500 hover:bg-red-600 text-white rounded-lg p-2 focus:outline-none text-right",
                                                     onClick: ()=>handleChat(application?.applicant?._id),
-                                                    children: [
-                                                        "\uD83D\uDCAC ",
-                                                        application?.applicant?._id
-                                                    ]
-                                                }, void 0, true, {
+                                                    children: "\uD83D\uDCAC"
+                                                }, void 0, false, {
                                                     fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                                    lineNumber: 141,
+                                                    lineNumber: 142,
                                                     columnNumber: 42
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                            lineNumber: 141,
+                                            lineNumber: 142,
                                             columnNumber: 37
                                         }, undefined)
                                     ]
                                 }, index, true, {
                                     fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                                    lineNumber: 86,
+                                    lineNumber: 87,
                                     columnNumber: 33
                                 }, undefined))
                         }, void 0, false, {
                             fileName: "Components/job_components/Job_user_applications.admin.components.js",
-                            lineNumber: 77,
+                            lineNumber: 78,
                             columnNumber: 21
                         }, undefined)
                     ]
@@ -988,6 +990,12 @@ $RefreshReg$(_c, "JobUserApplications");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","axios":"kooH4","react":"jMk1U","react-router-dom":"61z4w","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../Utils/constant":"25sJh"}]},["kcsj8"], null, "parcelRequire10c2", {})
+},{"react/jsx-dev-runtime":"dVPUn","axios":"kooH4","react":"jMk1U","react-router-dom":"61z4w","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../Utils/constant":"25sJh"}],"25sJh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "localhost", ()=>localhost);
+const localhost = "http://localhost:8000"; // /
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["kcsj8"], null, "parcelRequire10c2", {})
 
 //# sourceMappingURL=Job_user_applications.admin.components.98a4f58b.js.map

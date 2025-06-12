@@ -40,7 +40,7 @@ const handleClick=(recruiter,status,userid,jobapplicationid)=>{
                 applications.map((application) => (
                   <tr key={application._id} className="odd:bg-white even:bg-gray-50 hover:bg-gray-100">
                     <td className="border-t border-gray-300 px-2 py-3 text-gray-600 text-sm truncate">
-                      {application?._id || ""}
+                      {application?._id ||""}
                     </td>
                     <td className="border-t border-gray-300 px-2 py-3 text-gray-600 text-sm truncate">
                       {application?.job?.company?.name || ""}
@@ -67,12 +67,7 @@ const handleClick=(recruiter,status,userid,jobapplicationid)=>{
       title="Start Chat"
     >
       <span className="text-lg">💬</span>
-      {/* Online/Offline Dot (optional)
-      {isRecruiterOnline(application?.job?.recruiter?._id) ? (
-        <span className="h-2 w-2 bg-green-500 rounded-full"></span>
-      ) : (
-        <span className="h-2 w-2 bg-gray-400 rounded-full"></span>
-      )}*/}
+     
     </button>
   ) : (
     <span className="text-gray-400">–</span>
