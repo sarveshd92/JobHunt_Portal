@@ -5,9 +5,9 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { Oval } from 'react-loader-spinner';
 import { useDispatch, useSelector } from "react-redux";
-import {setuserdata_global,clearuserdata_global} from "../Utils/Store/userslice"
-import applicationSlice, {removeall, addapplication } from "../Utils/Store/applicationSlice";
-import { localhost } from "../Utils/constant";
+import {setuserdata_global,clearuserdata_global} from "../Utils/Store/userslice.js"
+import applicationSlice, {removeall, addapplication } from "../Utils/Store/applicationSlice.js";
+import { localhost } from "../Utils/constant.js";
 
 // import { removeall } from "../Utils/Store/applicationSlice"
 

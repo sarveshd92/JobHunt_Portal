@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setloading } from '../../Utils/Store/authslice';
-import { localhost } from '../../Utils/constant';
+import { localhost } from '../../Utils/constant.js';
 
 const CreateCompanyDetails = () => {
     const { compid } = useParams();
@@ -51,7 +51,7 @@ const CreateCompanyDetails = () => {
             dispatch(setloading(true));
             console.log("final ",companydetails.logo)
             const data = await axios.put(
-                `http://localhost:8000/api/v1/company/update/details/${compid}`,
+                `http://localhost:7777/api/v1/company/update/details/${compid}`,
                 companydetails,
                 {
                     withCredentials: true,

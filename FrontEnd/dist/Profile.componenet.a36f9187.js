@@ -782,7 +782,7 @@ const Profile = ()=>{
     };
     const fetchjobdata = async ()=>{
         try {
-            const data = await (0, _axiosDefault.default).get("http://localhost:8000/api/v1/application/appliedjobs", {
+            const data = await (0, _axiosDefault.default).get("http://localhost:7777/api/v1/application/appliedjobs", {
                 withCredentials: true
             });
             // console.log("jobdata",data)
@@ -1402,7 +1402,7 @@ $RefreshReg$(_c, "Profile");
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "localhost", ()=>localhost);
-const localhost = "http://localhost:8000"; // /
+const localhost = "http://localhost:7777"; // /
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["9zMKr"], null, "parcelRequire10c2", {})
 

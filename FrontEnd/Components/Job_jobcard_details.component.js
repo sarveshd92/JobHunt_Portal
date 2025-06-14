@@ -22,7 +22,7 @@ const JobJobcardDetails = () => {
         `${localhost}/api/v1/job/getjobbyidbyuser/${jobid}`,
         { withCredentials: true }
       );
-
+console.log(data)
       const data1 = await axios.post(
         `${localhost}/api/v1/job/appliedjobstatus`,
         { jobid },

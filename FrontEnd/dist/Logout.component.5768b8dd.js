@@ -686,10 +686,10 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactLoaderSpinner = require("react-loader-spinner");
 var _reactRedux = require("react-redux");
-var _userslice = require("../Utils/Store/userslice");
-var _applicationSlice = require("../Utils/Store/applicationSlice");
-var _applicationSliceDefault = parcelHelpers.interopDefault(_applicationSlice);
-var _constant = require("../Utils/constant");
+var _usersliceJs = require("../Utils/Store/userslice.js");
+var _applicationSliceJs = require("../Utils/Store/applicationSlice.js");
+var _applicationSliceJsDefault = parcelHelpers.interopDefault(_applicationSliceJs);
+var _constantJs = require("../Utils/constant.js");
 var _s = $RefreshSig$();
 // import { removeall } from "../Utils/Store/applicationSlice"
 const Logout = ()=>{
@@ -702,7 +702,7 @@ const Logout = ()=>{
     const dispatch = (0, _reactRedux.useDispatch)();
     const performLogout = async ()=>{
         try {
-            const result = await (0, _axiosDefault.default).post((0, _constant.localhost) + "/api/v1/user/logout", {}, {
+            const result = await (0, _axiosDefault.default).post((0, _constantJs.localhost) + "/api/v1/user/logout", {}, {
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -710,9 +710,9 @@ const Logout = ()=>{
             });
             console.log("result->", result);
             if (result?.data?.success) {
-                dispatch((0, _userslice.clearuserdata_global)());
+                dispatch((0, _usersliceJs.clearuserdata_global)());
                 (0, _reactToastify.toast).success(result.data.message);
-                dispatch((0, _applicationSlice.removeall)());
+                dispatch((0, _applicationSliceJs.removeall)());
                 setLogoutMessage("Logout is successful!");
                 // setuserdata(null); // Using null for clarity
                 //setuser(null);
@@ -782,11 +782,11 @@ $RefreshReg$(_c, "Logout");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router-dom":"61z4w","react-toastify":"2rAbP","axios":"kooH4","react-loader-spinner":"iMFJ7","react-redux":"hbNxT","../Utils/Store/userslice":"PcA9h","../Utils/Store/applicationSlice":"6Rs3f","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../Utils/constant":"25sJh"}],"25sJh":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router-dom":"61z4w","react-toastify":"2rAbP","axios":"kooH4","react-loader-spinner":"iMFJ7","react-redux":"hbNxT","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../Utils/Store/userslice.js":"PcA9h","../Utils/Store/applicationSlice.js":"6Rs3f","../Utils/constant.js":"25sJh"}],"25sJh":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "localhost", ()=>localhost);
-const localhost = "http://localhost:8000"; // /
+const localhost = "http://localhost:7777"; // /
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["bhWez"], null, "parcelRequire10c2", {})
 
