@@ -42,3 +42,9 @@ npm run start
 # Run frontend
 cd ../frontend
 npm start
+ sudo systemctl start nginx  "to start nginx
+enable nginx 
+ copy  cd /var/www/html
+cd 
+ sudo scp -r dist/* /var/www/html
+![alt text](image-1.png)

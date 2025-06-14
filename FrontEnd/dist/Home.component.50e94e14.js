@@ -1355,7 +1355,7 @@ $RefreshReg$(_c, "Home_Footer");
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "localhost", ()=>localhost);
-const localhost = "http://localhost:8000"; // /
+const localhost = "http://localhost:7777"; // /
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["dm62I"], null, "parcelRequire10c2", {})
 

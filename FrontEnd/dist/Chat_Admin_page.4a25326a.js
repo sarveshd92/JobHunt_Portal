@@ -674,6 +674,107 @@ var prevRefreshSig = globalThis.$RefreshSig$;
 $parcel$ReactRefreshHelpers$e487.prelude(module);
 
 try {
+// import React, { useEffect, useRef, useState } from "react";
+// import { useParams } from "react-router-dom";
+// import { io } from "socket.io-client";
+// import { localhost } from "../Utils/constant";
+// const ChatPage = () => {
+//     const { userid } = useParams();
+//     const socketRef = useRef(null);
+//     const [messages, setMessages] = useState([]);
+//     const [input, setInput] = useState("");
+//     const [isTyping, setIsTyping] = useState(false);
+//     useEffect(() => {
+//         socketRef.current = io(localhost, {
+//             withCredentials: true
+//         });
+//       socketRef.current.emit("join-room", userid);
+//       socketRef.current.on("previous-messages", (messages) => {
+//     setMessages(messages); // Load all old messages
+//   });
+//        socketRef.current.on("user-typing", (data) => {
+//         setIsTyping(true);
+//         // hide typing after 2 sec
+//         setTimeout(() => setIsTyping(false), 2000);
+//     });
+//         socketRef.current.on("receive-message", (data) => {
+//             setMessages((prev) => [...prev, { content: data, sender: "other" }]);
+//         });
+//         return () => socketRef.current.disconnect();
+//     }, [userid]);
+//  const handleChange = (e) => {
+//     setInput(e.target.value);
+//     if (socketRef.current) {
+//       socketRef.current.emit("user-typing", userid);
+//     }
+//   };
+//     const sendMessage = () => {
+//         if (input.trim() === "") return;
+//         // socketRef.current.emit("send-message", {
+//         //     room: userid,
+//         //     message: input,
+//         // });
+//         console.log(userid,input+"sender"+userid)
+//          socketRef.current.emit("send-message", {
+//   room: userid,
+//       message: input,
+//   senderId: "",
+//   receiverId: userid,
+// });
+//         setMessages((prev) => [...prev, { content: input, sender: "you" }]);
+//         setInput("");
+//     };
+//    return (
+//     <div className="max-w-md w-full mx-auto p-4 min-h-screen flex flex-col">
+//       <h3 className="text-2xl font-semibold mb-4 text-center">💬 Simple Chat</h3>
+//       {/* ✅ Scrollable chat box */}
+//       <div
+//         className="flex-1 bg-gray-100 p-4 rounded-lg shadow-inner overflow-y-auto mb-4"
+//         style={{ maxHeight: "400px", minHeight: "300px" }}
+//       >
+//         {messages.length === 0 ? (
+//           <p className="text-center text-gray-500">No messages yet.</p>
+//         ) : (
+//           messages.map((msg, idx) => (
+//             <div
+//               key={idx}
+//               className={`mb-2 flex ${
+//                 msg.senderId === userid ? "justify-end" : "justify-start"
+//               }`}
+//             >
+//               <span
+//                 className={`inline-block px-4 py-2 max-w-xs break-words rounded-lg text-sm ${
+//                   msg.senderId === userid
+//                     ? "bg-blue-600 text-white"
+//                     : "bg-gray-300 text-gray-900"
+//                 }`}
+//               >
+//                 {msg.content}
+//               </span>
+//             </div>
+//           ))
+//         )}
+//       </div>
+//       {/* ✅ Input and button */}
+//       <div className="flex w-full">
+//         <input
+//           value={input}
+//           onChange={handleChange}
+//           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+//           placeholder="Type a message..."
+//           className="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+//         />
+//         <button
+//           onClick={sendMessage}
+//           className="bg-blue-600 text-white px-6 py-2 rounded-r-lg hover:bg-blue-700 transition"
+//         >
+//           Send
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+// export default ChatPage;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
@@ -690,27 +791,25 @@ const ChatPage = ()=>{
     const [messages, setMessages] = (0, _react.useState)([]);
     const [input, setInput] = (0, _react.useState)("");
     const [isTyping, setIsTyping] = (0, _react.useState)(false);
+    const typingTimeoutRef = (0, _react.useRef)(null);
     (0, _react.useEffect)(()=>{
         socketRef.current = (0, _socketIoClient.io)((0, _constant.localhost), {
             withCredentials: true
         });
         socketRef.current.emit("join-room", userid);
-        socketRef.current.on("previous-messages", (messages)=>{
-            setMessages(messages); // Load all old messages
+        socketRef.current.on("previous-messages", (oldMessages)=>{
+            setMessages(oldMessages); // Must contain senderId in each
         });
-        socketRef.current.on("user-typing", (data)=>{
+        socketRef.current.on("user-typing", ()=>{
             setIsTyping(true);
-            // hide typing after 2 sec
-            setTimeout(()=>setIsTyping(false), 2000);
+            if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
+            typingTimeoutRef.current = setTimeout(()=>setIsTyping(false), 2000);
         });
         socketRef.current.on("receive-message", (data)=>{
             setMessages((prev)=>[
                     ...prev,
-                    {
-                        content: data,
-                        sender: "other"
-                    }
-                ]);
+                    data
+                ]); // Must contain { senderId, message }
         });
         return ()=>socketRef.current.disconnect();
     }, [
@@ -722,23 +821,16 @@ const ChatPage = ()=>{
     };
     const sendMessage = ()=>{
         if (input.trim() === "") return;
-        // socketRef.current.emit("send-message", {
-        //     room: userid,
-        //     message: input,
-        // });
-        console.log(userid, input + "sender" + userid);
-        socketRef.current.emit("send-message", {
+        const messageData = {
             room: userid,
             message: input,
-            senderId: "",
-            receiverId: userid
-        });
+            senderId: userid,
+            receiverId: "recruiter"
+        };
+        socketRef.current.emit("send-message", messageData);
         setMessages((prev)=>[
                 ...prev,
-                {
-                    content: input,
-                    sender: "you"
-                }
+                messageData
             ]);
         setInput("");
     };
@@ -750,7 +842,7 @@ const ChatPage = ()=>{
                 children: "\uD83D\uDCAC Simple Chat"
             }, void 0, false, {
                 fileName: "Components/Chat_Admin_page.js",
-                lineNumber: 70,
+                lineNumber: 185,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -759,31 +851,41 @@ const ChatPage = ()=>{
                     maxHeight: "400px",
                     minHeight: "300px"
                 },
-                children: messages.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    className: "text-center text-gray-500",
-                    children: "No messages yet."
-                }, void 0, false, {
-                    fileName: "Components/Chat_Admin_page.js",
-                    lineNumber: 79,
-                    columnNumber: 11
-                }, undefined) : messages.map((msg, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: `mb-2 flex ${msg.senderId === userid ? "justify-end" : "justify-start"}`,
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                            className: `inline-block px-4 py-2 max-w-xs break-words rounded-lg text-sm ${msg.senderId === userid ? "bg-blue-600 text-white" : "bg-gray-300 text-gray-900"}`,
-                            children: msg.content
-                        }, void 0, false, {
-                            fileName: "Components/Chat_Admin_page.js",
-                            lineNumber: 88,
-                            columnNumber: 15
-                        }, undefined)
-                    }, idx, false, {
+                children: [
+                    messages.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        className: "text-center text-gray-500",
+                        children: "No messages yet."
+                    }, void 0, false, {
                         fileName: "Components/Chat_Admin_page.js",
-                        lineNumber: 82,
-                        columnNumber: 13
-                    }, undefined))
-            }, void 0, false, {
+                        lineNumber: 192,
+                        columnNumber: 11
+                    }, undefined) : messages.map((msg, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: `mb-2 flex ${msg.senderId === userid ? "justify-end" : "justify-start"}`,
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                className: `inline-block px-4 py-2 max-w-xs break-words rounded-lg text-sm ${msg.senderId === userid ? "bg-blue-600 text-white" : "bg-gray-300 text-gray-900"}`,
+                                children: msg.message || msg.content
+                            }, void 0, false, {
+                                fileName: "Components/Chat_Admin_page.js",
+                                lineNumber: 201,
+                                columnNumber: 15
+                            }, undefined)
+                        }, idx, false, {
+                            fileName: "Components/Chat_Admin_page.js",
+                            lineNumber: 195,
+                            columnNumber: 13
+                        }, undefined)),
+                    isTyping && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        className: "text-sm italic text-gray-500 mt-2",
+                        children: "Typing..."
+                    }, void 0, false, {
+                        fileName: "Components/Chat_Admin_page.js",
+                        lineNumber: 214,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "Components/Chat_Admin_page.js",
-                lineNumber: 73,
+                lineNumber: 187,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -797,7 +899,7 @@ const ChatPage = ()=>{
                         className: "flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                     }, void 0, false, {
                         fileName: "Components/Chat_Admin_page.js",
-                        lineNumber: 104,
+                        lineNumber: 219,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -806,23 +908,23 @@ const ChatPage = ()=>{
                         children: "Send"
                     }, void 0, false, {
                         fileName: "Components/Chat_Admin_page.js",
-                        lineNumber: 111,
+                        lineNumber: 226,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Components/Chat_Admin_page.js",
-                lineNumber: 103,
+                lineNumber: 218,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "Components/Chat_Admin_page.js",
-        lineNumber: 69,
+        lineNumber: 184,
         columnNumber: 5
     }, undefined);
 };
-_s(ChatPage, "YHv50dmsEQKHLZugPZtB+4eRQY8=", false, function() {
+_s(ChatPage, "TTsz9ZeyzfTCqvKjDoAB+zv/AaQ=", false, function() {
     return [
         (0, _reactRouterDom.useParams)
     ];
@@ -841,7 +943,7 @@ $RefreshReg$(_c, "ChatPage");
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "localhost", ()=>localhost);
-const localhost = "http://localhost:8000"; // /
+const localhost = "http://localhost:7777"; // /
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["hdKFi"], null, "parcelRequire10c2", {})
 

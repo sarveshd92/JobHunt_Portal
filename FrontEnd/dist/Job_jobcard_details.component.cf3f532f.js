@@ -700,6 +700,7 @@ const JobJobcardDetails = ()=>{
             const data = await (0, _axiosDefault.default).get(`${(0, _constant.localhost)}/api/v1/job/getjobbyidbyuser/${jobid}`, {
                 withCredentials: true
             });
+            console.log(data);
             const data1 = await (0, _axiosDefault.default).post(`${(0, _constant.localhost)}/api/v1/job/appliedjobstatus`, {
                 jobid
             }, {
@@ -998,7 +999,7 @@ $RefreshReg$(_c, "JobJobcardDetails");
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "localhost", ()=>localhost);
-const localhost = "http://localhost:8000"; // /
+const localhost = "http://localhost:7777"; // /
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["9v93s"], null, "parcelRequire10c2", {})
 

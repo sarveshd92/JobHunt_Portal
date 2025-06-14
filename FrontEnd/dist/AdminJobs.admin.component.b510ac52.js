@@ -721,7 +721,7 @@ const AdminJobs = ()=>{
     };
     const handleClickDelete = async (jobid)=>{
         try {
-            const response = await (0, _axiosDefault.default).get(`http://localhost:8000/api/v1/job/deletebyjobid/${jobid}`, {
+            const response = await (0, _axiosDefault.default).get(`http://localhost:7777/api/v1/job/deletebyjobid/${jobid}`, {
                 withCredentials: true,
                 headers: {
                     "Content-Type": "application/json"
@@ -1072,7 +1072,7 @@ const Usealljobs = ()=>{
     (0, _react.useEffect)(()=>{
         const fetchData = async ()=>{
             try {
-                const result = await (0, _axiosDefault.default).get('http://localhost:8000/api/v1/job/getalljobs', {
+                const result = await (0, _axiosDefault.default).get('http://localhost:7777/api/v1/job/getalljobs', {
                     withCredentials: true
                 });
                 setJobs(result.data.result); // Adjust based on your API response
@@ -1105,7 +1105,7 @@ $RefreshReg$(_c, "Usealljobs");
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "localhost", ()=>localhost);
-const localhost = "http://localhost:8000"; // /
+const localhost = "http://localhost:7777"; // /
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["c6blC"], null, "parcelRequire10c2", {})
 

@@ -685,7 +685,7 @@ var _reactRouterDom = require("react-router-dom");
 var _reactRedux = require("react-redux");
 var _reactToastify = require("react-toastify");
 var _authslice = require("../../Utils/Store/authslice");
-var _constant = require("../../Utils/constant");
+var _constantJs = require("../../Utils/constant.js");
 var _s = $RefreshSig$();
 const CreateCompanyDetails = ()=>{
     _s();
@@ -707,7 +707,7 @@ const CreateCompanyDetails = ()=>{
     };
     const fetchdata = async ()=>{
         try {
-            const data = await (0, _axiosDefault.default).get(`${(0, _constant.localhost)}/api/v1/company/getcompany/${compid}`);
+            const data = await (0, _axiosDefault.default).get(`${(0, _constantJs.localhost)}/api/v1/company/getcompany/${compid}`);
             setcompanydetails(data?.data?.getcomapany);
         } catch (error) {
             console.log(error);
@@ -732,7 +732,7 @@ const CreateCompanyDetails = ()=>{
         try {
             dispatch((0, _authslice.setloading)(true));
             console.log("final ", companydetails.logo);
-            const data = await (0, _axiosDefault.default).put(`http://localhost:8000/api/v1/company/update/details/${compid}`, companydetails, {
+            const data = await (0, _axiosDefault.default).put(`http://localhost:7777/api/v1/company/update/details/${compid}`, companydetails, {
                 withCredentials: true,
                 headers: {
                     "Content-Type": "multipart/form-data"
@@ -1047,11 +1047,11 @@ $RefreshReg$(_c, "CreateCompanyDetails");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","axios":"kooH4","react":"jMk1U","react-router-dom":"61z4w","react-redux":"hbNxT","react-toastify":"2rAbP","../../Utils/Store/authslice":"4Yr6N","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../Utils/constant":"25sJh"}],"25sJh":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","axios":"kooH4","react":"jMk1U","react-router-dom":"61z4w","react-redux":"hbNxT","react-toastify":"2rAbP","../../Utils/Store/authslice":"4Yr6N","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../Utils/constant.js":"25sJh"}],"25sJh":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "localhost", ()=>localhost);
-const localhost = "http://localhost:8000"; // /
+const localhost = "http://localhost:7777"; // /
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["2dih9"], null, "parcelRequire10c2", {})
 

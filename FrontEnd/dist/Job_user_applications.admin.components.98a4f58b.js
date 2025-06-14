@@ -691,7 +691,7 @@ const JobUserApplications = ()=>{
     const navigate = (0, _reactRouterDom.useNavigate)();
     const fetchData = async ()=>{
         try {
-            const response = await (0, _axiosDefault.default).get(`http://localhost:8000/api/v1/job/getjobbyid/${jobid}`, {
+            const response = await (0, _axiosDefault.default).get(`${(0, _constant.localhost)}/api/v1/job/getjobbyid/${jobid}`, {
                 withCredentials: true
             });
             setCompanies(response.data.result || []);
@@ -994,7 +994,7 @@ $RefreshReg$(_c, "JobUserApplications");
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "localhost", ()=>localhost);
-const localhost = "http://localhost:8000"; // /
+const localhost = "http://localhost:7777"; // /
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["kcsj8"], null, "parcelRequire10c2", {})
 
